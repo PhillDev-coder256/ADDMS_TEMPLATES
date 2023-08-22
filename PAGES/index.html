@@ -1,0 +1,259 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://kit.fontawesome.com/ecf5c1768c.js" crossorigin="anonymous"></script>
+    <title>DASHBOARD-STUDENT</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="left">
+                <p>DASHBOARD</p>
+                <div class="search">
+                    <input type="search" placeholder="SEARCH" name="" id="">
+                    <img src="./icons/search.png" alt="">
+                </div>
+            </div>
+            <div class="right">
+                <p class="week" >WEEK 1</p>
+                <div class="icons">
+                    <div class="notifications">
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+
+                        <p>2</p>
+                    </div>
+                    <div class="settings">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+
+                        
+                    </div>
+                    <div class="inbox">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+
+                        <p>4</p>
+                        
+                    </div>
+                </div>
+                <div class="greet">
+                    <p>Hello <span>Phillip</span></p>
+                </div>
+                <div class="avatar">
+                    <img src="./img/avatar.png" alt="">
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="nav">
+                <ul>
+                    <li>
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                        <a href="">Dashboard</a>
+                        
+                    </li>
+                    <li>
+                        <i class="fa fa-check-square" aria-hidden="true"></i>
+
+                        <a href="">Placement details</a></li>
+                    <li>
+                        <i class="fa fa-tasks" aria-hidden="true"></i>
+
+                        <a href="">Supervisors</a></li>
+                    <li>
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+
+                        <a href="">Important dates</a></li>
+                    <li>
+                        
+                        <i class="fa fa-cloud-download" aria-hidden="true"></i>
+<a href="">Downloads</a></li>
+                    <li>
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+
+                        <a href="">My results</a></li>
+                    <li>
+                        <i class="fa fa-yelp" aria-hidden="true"></i>
+
+                        <a href="">Help</a></li>
+                    <li>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+
+                        <a href="">FAQs</a></li>
+                    
+                        
+                    
+                </ul>
+                <img src="img/logo.png" alt="lolo">
+                
+            </div>
+            <div class="cols">
+                <div class="col-1">
+                    <br><br><br>
+                    <div class="row-1">
+                        <h3>LOGBOOK FORM</h3>
+
+                        <p>TIME LEFT <span>00HRS: 30 MINS</span></p>
+                    </div>
+                    <div class="row-2">
+                        <form action="" method="post">
+                            <div>
+                                <label for="tasks">Daily tasks <span>*</span></label><br>
+                                <textarea name="" id="tasks" placeholder="Daily taks assigned by the agency"></textarea>
+                            </div>
+                            <div>
+                                <label for="lessons">Lessons learnt <span>*</span></label><br>
+                                <textarea name="" id="lessons" placeholder="Lessons learned"></textarea>
+                            </div>
+                            <div>
+                                <label for="challenges">Challenges faced<span>*</span></label><br>
+                                <textarea name="" id="challenges" placeholder="Challenges faced when accomplishing tasks"></textarea>
+                            </div>
+                            <div>
+                                <label for="recommendations">Recommendations<span>*</span></label><br>
+                                <textarea name="" id="tasks" placeholder="recommendations to either the agency or to yourself"></textarea>
+                            </div>
+
+                            <div class="buttons">
+                                <button>Save</button>
+                                <input type="submit" value="Submit">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="col-2">
+                    <br><br><br>
+                    <h3>Analytics</h3>
+                    <div class="row-1">
+                        <div id="calendar">
+                            <div id="date">
+
+                            </div>
+                        </div>
+
+                        <script>
+                            function makeCalendar() {
+                              // Get the current year and month.
+                              const year = new Date().getFullYear();
+                              const month = new Date().getMonth();
+                            
+                              // Create an array to store the days of the month.
+                              let days = [];
+                              for (let i = 0; i < 31; i++) {
+                                days.push(i + 1);
+                              }
+                            
+                              // Create an HTML table to display the calendar.
+                              let calendar = document.createElement("table");
+                              calendar.setAttribute("id", "calendar");
+                            
+                              // Add the header row to the calendar.
+                              let headerRow = document.createElement("tr");
+                              for (let i = 0; i < 7; i++) {
+                                let headerCell = document.createElement("th");
+                                headerCell.innerHTML = days[i];
+                                headerRow.appendChild(headerCell);
+                              }
+                              calendar.appendChild(headerRow);
+                            
+                              // Add the days of the month to the calendar.
+                              for (let i = 0; i < 6; i++) {
+                                let row = document.createElement("tr");
+                                for (let j = 0; j < 7; j++) {
+                                  let cell = document.createElement("td");
+                                  if (i * 7 + j < days.length) {
+                                    cell.innerHTML = days[i * 7 + j];
+                                    if (new Date().getDate() == days[i * 7 + j]) {
+                                      cell.className = "today";
+                                    }
+                                  } else {
+                                    cell.innerHTML = "";
+                                  }
+                                  row.appendChild(cell);
+                                }
+                                calendar.appendChild(row);
+                              }
+                            
+                              // Return the calendar.
+                              return calendar;
+                            }
+                            
+                            // Create the calendar.
+                            const calendar = makeCalendar();
+                            
+                            // Append the calendar to the DOM.
+                            document.getElementById("calendar").appendChild(calendar);
+                            </script>
+
+                        <div class="progress">
+                            <h3>PROGRESS</h3>
+                        </div>
+                    </div>
+                    <div class="row-2">
+                        <h3>GRAPH</h3>
+                    </div>
+                    <br>
+                    <div class="row-3">
+                        <div class="head-txt">
+                            <h3>Weekly Progress Report</h3>
+                            <a href="">Download all reports</a>
+                        </div>
+                        <form action="">
+                            <div style="display: flex;justify-content: space-between;">
+                                <span>
+                                    Tasks completed <span>*</span></span>
+                                <a href="">Edit</a>
+                                
+                            </div>
+                            <textarea ></textarea>
+                            <br>
+                            Tasks in progress <spans>*</spans><br>
+                            <textarea ></textarea>
+                            <br>
+                            Any comments ?<br>
+                            <textarea ></textarea>
+
+                            <div class="buttons">
+                                <button>Save</button>
+                                <input type="submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

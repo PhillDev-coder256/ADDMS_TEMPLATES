@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    
+    <title>ONLINE INTERNSHIP MANAGEMENT SYSTEM</title>
+</head>
+<body>
+    <div class="sec-1">
+        <nav class="navbar-container">
+            <div onclick='toggleMenu()'  class="toggle" >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </div>
+
+            <div id="nav" class="nav-bar-links">
+                <ul id="list">
+                    <li><a href="">Help</a></li>
+                    <li><a href="">FAQs</a></li>
+                    <li><a href="">Feedback</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="account">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+        
+    </div>
+    <div class="sec-2">
+        <div class="logo">
+            <img src="./images/logo-removebg-preview.png" alt="KABALE UNIVERSITY LOGO">
+        </div>
+        <div class="label-txt">
+            <p>ADDMS</p>
+        </div>
+        <div class="links">
+            <ul>
+                <li>
+                    <a href="https://www.elearning.kab.ac.ug">E-LEARNING</a>
+                </li>
+                <li>
+                    <a href="https://www.studentportal.kab.ac.ug">AIMS</a>
+                </li>
+                <li>
+                    <a href="./PAGES/">INTERNSHIP</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mode-toggle">
+        <label class="switch">
+            <div class="round"><input name="onoff" id="onoff" type="checkbox">
+                <div class="back">
+                    <label for="onoff" class="but">
+                        <span class="on">0</span>
+                        <span class="off">1</span>
+                    </label>
+                </div>
+            </div>
+        </label>
+    </div>
+    <div class="sec-3">
+        <div class="mode">
+                <span id="mytogglebtn" >
+                    Dark mode
+                </span>
+
+                <span id="ightmytogglebtn" class="light-btn">
+                    Light mode
+                </span>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; 2023 <span>Kabale University</span> - FOCLIS </p>
+            
+        </div>
+    </div>
+    
+    <script src="js/index.js"></script>
+    <script>
+        const changeMode = () =>{
+						const toggleBtn = document.getElementById('mytogglebtn');
+						const lighttoggleBtn = document.getElementById('ightmytogglebtn');
+						const container = document.querySelector('body');
+
+
+						toggleBtn.addEventListener('click', ()=>{
+							localStorage.setItem('mode', 'dark');
+
+							container.classList.add('dark-mode');
+							toggleBtn.style.display = 'none';
+							lighttoggleBtn.style.display = 'block';
+						});
+
+						lighttoggleBtn.addEventListener('click', ()=>{
+							localStorage.setItem('mode', 'light');
+
+							container.classList.remove('dark-mode');
+							toggleBtn.style.display = 'block';
+							lighttoggleBtn.style.display = 'none';
+							// logo.src = "{% static 'movies/images/primULogo.png' %}"
+							// logo2.src = "{% static 'movies/images/primULogo.png' %}"
+
+						});
+					}
+
+					changeMode();
+					
+
+					const checkMode = () =>{
+						var mode_status = localStorage.getItem('mode');
+						const container = document.querySelector('body');
+						const lighttoggleBtn = document.getElementById('ightmytogglebtn');
+						const toggleBtn = document.getElementById('mytogglebtn');
+
+						if(mode_status == 'dark'){
+							container.classList.add('dark-mode');
+							toggleBtn.style.display = 'none';
+							lighttoggleBtn.style.display = 'block';
+						}else{
+							container.classList.remove('dark-mode');
+							toggleBtn.style.display = 'block';
+							lighttoggleBtn.style.display = 'none';
+
+						}
+
+						console.log(mode_status)
+						
+					}
+
+					checkMode();
+    </script>
+</body>
+</html>

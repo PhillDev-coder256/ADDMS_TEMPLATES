@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calendar</title>
+<style>
+body {
+  font-family: sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 5px;
+}
+
+th {
+  background-color: #ccc;
+}
+
+td {
+  background-color: #fff;
+}
+
+.today {
+  background-color: #f00;
+}
+</style>
+</head>
+<body>
+<h1>Calendar</h1>
+<div id="calendar">
+  
+</div>
+<script>
+function makeCalendar() {
+  // Get the current year and month.
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth();
+
+  // year()
+
+  // Create an array to store the days of the month.
+  let days = [];
+  for (let i = 0; i < 31; i++) {
+    days.push(i + 1);
+  }
+
+  // Create an HTML table to display the calendar.
+  let calendar = document.createElement("table");
+  calendar.setAttribute("id", "calendar");
+
+  // Add the header row to the calendar.
+  let headerRow = document.createElement("tr");
+  for (let i = 0; i < 7; i++) {
+    let headerCell = document.createElement("th");
+    headerCell.innerHTML = days[i];
+    headerRow.appendChild(headerCell);
+  }
+  calendar.appendChild(headerRow);
+
+  // Add the days of the month to the calendar.
+  for (let i = 0; i < 6; i++) {
+    let row = document.createElement("tr");
+    for (let j = 0; j < 7; j++) {
+      let cell = document.createElement("td");
+      if (i * 7 + j < days.length) {
+        cell.innerHTML = days[i * 7 + j];
+        if (new Date().getDate() == days[i * 7 + j]) {
+          cell.className = "today";
+        }
+      } else {
+        cell.innerHTML = "";
+      }
+      row.appendChild(cell);
+    }
+    calendar.appendChild(row);
+  }
+
+  // Return the calendar.
+  return calendar;
+}
+
+// Create the calendar.
+const calendar = makeCalendar();
+
+// Append the calendar to the DOM.
+document.getElementById("calendar").appendChild(calendar);
+</script>
+</body>
+</html>
+
